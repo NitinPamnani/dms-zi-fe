@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import DirectoryImage from '../img/folder.png'
 import FileImage from '../img/file.png'
 import client from '../client/generated/gRPCClient/client.js'
@@ -7,12 +7,17 @@ import {GetDirectoryContentsRequest, MoveFileOrDirectoryRequest } from '../clien
 import cookies from '../context/CookieManager'
 import { useJwt } from 'react-jwt'
 import { useNavigate } from 'react-router-dom'
+import AddFileModal from '../components/AddFileModal'
+import AddFolderModal from '../components/AddFolderModal'
+import 'semantic-ui-css/semantic.min.css'
+import { AuthContext } from '../context/AuthContext';
 
 
 const Root = () => {
   const navigate = useNavigate()
   const [directoryItems, setDirectoryItems] = useState([])
   const [fileItems, setFileItems] = useState([])
+  const {fileCreated, setFileCreated} = useContext(AuthContext);
   const userToken = cookies.get('access_token');
 
   const [fileDragged, setFileDragged] = useState('')
@@ -41,7 +46,7 @@ const Root = () => {
       })
     };
     FetchData()
-  }, [JSON.stringify(decodedToken),fileDragged]);
+  }, [JSON.stringify(decodedToken),fileDragged, fileCreated]);
 
   const handleDoubleClickOnDir = (item) => {
     item.preventDefault();
@@ -93,10 +98,10 @@ const Root = () => {
     <div className="home">
       <div className = "icons">
         <div>
-          Add File
+          <AddFileModal />
         </div>
         <div>
-          Add Folder
+          <AddFolderModal/>
         </div>
       </div>  
       <div className = "items">
