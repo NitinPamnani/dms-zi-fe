@@ -1,0 +1,180 @@
+$lightGreen : #b9e7e7;
+
+.app {
+    display: flex;
+    justify-content: center;
+    .container{ 
+
+        //Login and register
+        width:1024px;
+
+        .auth{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height:100vh;
+            flex-direction: column;
+            background-color: $lightGreen;
+
+            h1 {
+                font-size: 20px;
+                color: teal;
+                margin-bottom: 20px;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                padding: 50px;
+                background-color: white;
+                width: 200px;
+                gap: 20px;
+
+                input {
+                    padding:10px;
+                    border: none;
+                    border-bottom: 1px solid gray;
+                }
+
+                button {
+                    padding:10px;
+                    border: none;
+                    background-color:teal;
+                    cursor: pointer;
+                    color:white;
+                }
+
+                span {
+                    font-size: 12px;
+                    text-align: center;
+                }
+
+                p {
+                    color:red;
+                    font-size: 12px;
+                    text-align: center;
+                }
+            }
+        }
+
+        //NAVBAR
+
+        .navbar{
+            .container{
+                padding: 10px 0px;
+                display: flex;
+                justify-content: space-between;
+            }
+            .logo {
+                img {
+                    width: 120px;
+                }
+            }
+            .links {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            h4{
+                font-size: 16px;
+                font-weight: 300;
+            }
+
+            span{
+                cursor: pointer;
+                &:hover{
+                    background-color: lightblue;
+
+                }
+            }
+        }
+
+        //FOOTER
+
+        footer{
+            margin-top: 100px;
+            padding: 20px;
+            background-color: $lightGreen;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-style: 12px;
+
+            margin-left: -2%;
+            position: relative;
+            width: 100%;
+            
+
+            img {
+                height: 50px;
+            }
+        }
+
+        .home{
+            margin-top:50px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px; 
+            .items {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .icons {
+                display: flex;
+                flex-direction: row;
+                gap:90px;
+                cursor: pointer;
+                div{
+                  &:hover{
+                    color:teal;
+                  }
+                }
+            }
+        }
+
+        .item-each {
+            display: flex;
+            flex-direction: column;
+            .img {
+                flex: 1;
+
+                img{
+                    width: 5%;
+                }
+
+            }
+            .name {
+                flex: 2;
+            }
+        }
+
+
+        //File View
+        .singleFile{
+            display: flex;
+            gap:50px;
+
+            .content {
+                flex:5;
+
+                h3{
+                    font-style: 43px;
+                    color:gray;
+                }
+
+                p{
+                    font-size: medium;
+                    text-align: justify ;
+                    line-height: 30px;
+                }
+            }
+
+            .menu {
+                flex:2;
+            }
+        }
+    }
+}

@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+service DocumentManagementService{
+    rpc LogInUser(UserLogInRequest) returns (UserLogInResponse) {}
+    rpc GetDirectoryContents(GetDirectoryContentsRequest) returns (GetDirectoryContentsResponse) {}
+    rpc GetFileContents(GetFileContentsRequest) returns (GetFileContentsResponse) {}
+    rpc MoveFileOrDirectory(MoveFileOrDirectoryRequest) returns (MoveFileOrDirectoryResponse) {}
+    rpc CreateFile(CreateFileRequest) returns (CreateFileResponse) {}
+    rpc CreateDirectory(CreateDirectoryRequest) returns (CreateDirectoryResponse) {}
+}
+
+message UserLogInRequest{
+    string email = 1;
+    string password = 2;
+}
+
+message UserLogInResponse {
+    bool success = 1;
+    optional string token = 2;
+}
+
+message GetDirectoryContentsRequest{
+    string id = 1;
+    string token = 2;
+}
+
+message GetDirectoryContentsResponse{
+    bool success = 1;
+    repeated Directory directories = 2;
+    repeated File files = 3;
+    optional string err = 4;
+}
+message File{
+    string id = 1;
+    string name = 2;
+}
+message Directory{
+    string id = 1;
+    string name = 2;
+}
+
+message GetFileContentsRequest{
+    string id = 1;
+    string token = 2;
+}
+
+message GetFileContentsResponse{
+    string id = 1;
+    string name = 2;
+    string content = 3;
+    optional string err = 4;
+    bool success = 5;
+}
+
+message MoveFileOrDirectoryRequest{
+    string id = 1;
+    string currentParentId = 2;
+    string newParentId = 3;
+    string token = 4;
+}
+
+message MoveFileOrDirectoryResponse{
+    bool success = 1;
+    optional string error = 2;
+}
+
+message CreateFileRequest{
+    string name = 1;
+    string content = 2;
+    optional string parentDirId = 3;
+    string token = 4;
+}
+
+message CreateFileResponse{
+    bool success = 1;
+    optional string error = 2;
+}
+
+message CreateDirectoryRequest{
+    string name = 1;
+    optional string parentDirId = 2;
+    string token = 4;
+}
+
+message CreateDirectoryResponse{
+    bool success = 1;
+    optional string error = 2;
+}
